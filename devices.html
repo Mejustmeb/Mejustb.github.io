@@ -47,19 +47,20 @@
     .then(function (r) { return r.json(); })
     .then(function (d) {
       var list = (d && d.devices) || [];
-      meta.textContent = 'last scan: ' + (d.generated_at || '') + ' · ' + list.length + ' device(s) found';
+      var drivers = (d && d.drivers) || {};
+      var controllable = list.filter(function (x) { return x.control && x.control.driver; });
+      var discovered = list.filter(function (x) { return !(x.control && x.control.driver); });
+      meta.textContent = 'last scan: ' + (d.generated_at || '') + ' · ' + list.length +
+        ' device(s) · ' + controllable.length + ' controllable · ' + discovered.length + ' discovered';
       if (!list.length) {
         el.innerHTML = '<div class="card"><p class="dim">No devices on the ARP table right now — Echo will rescan and update this page.</p></div>';
         return;
       }
-      el.innerHTML = list.map(function (x) {
+      function card(x) {
         var name = (x.name && x.name !== '?') ? x.name : x.ip;
         var mac = x.mac ? '<p class="dim">' + x.mac + '</p>' : '';
         var ctl = (x.control) || {};
         var badge = '<span class="badge green">' + (x.source || 'device') + '</span>';
-        if (ctl.driver && d.drivers && d.drivers[ctl.driver]) {
-          badge += ' <span class="badge">' + (d.drivers[ctl.driver].label || ctl.driver) + '</span>';
-        }
         var appsHtml = '';
         if (ctl.apps && ctl.apps.length) {
           var shown = ctl.apps.slice(0, 10);
@@ -70,7 +71,22 @@
         return '<div class="card">' + badge +
           '<h3><span class="ic">🖥️</span>' + name + '</h3>' +
           '<p>' + (x.ip || '') + '</p>' + mac + appsHtml + '</div>';
-      }).join('');
+      }
+      var html = '';
+      var groups = {};
+      controllable.forEach(function (x) {
+        (groups[x.control.driver] = groups[x.control.driver] || []).push(x);
+      });
+      Object.keys(groups).forEach(function (drv) {
+        var label = (drivers[drv] && drivers[drv].label) || drv;
+        html += '<h2 class="section-title">' + label + '</h2><div class="grid">' +
+          groups[drv].map(card).join('') + '</div>';
+      });
+      if (discovered.length) {
+        html += '<h2 class="section-title">discovered — not yet controllable</h2><div class="grid">' +
+          discovered.map(card).join('') + '</div>';
+      }
+      el.innerHTML = html;
     })
     .catch(function () {
       el.innerHTML = '<div class="card"><p class="dim">Device map unavailable right now.</p></div>';

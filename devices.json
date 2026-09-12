@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12 09:58:43",
+  "generated_at": "2026-09-12 10:02:54",
   "count": 19,
   "devices": [
     {
@@ -60,6 +60,12 @@
       "name": "worker2",
       "ip": "192.168.50.202",
       "mac": "78:2b:cb:b7:d5:d0",
+      "source": "arp"
+    },
+    {
+      "name": "?",
+      "ip": "192.168.50.203",
+      "mac": "50:1a:c5:92:50:a0",
       "source": "arp"
     },
     {
@@ -201,18 +207,6 @@
       "ip": "255.255.255.255",
       "mac": "ff:ff:ff:ff:ff:ff",
       "source": "arp"
-    },
-    {
-      "name": "XBOXONE",
-      "ip": "192.168.50.203",
-      "mac": "",
-      "source": "upnp",
-      "control": {
-        "type": "upnp",
-        "control_url": "http://192.168.50.203:2869/upnphost/udhisapi.dll?control=uuid:130147ac-a985-4281-8462-d0494b7383a3+urn:dial-multiscreen-org:serviceId:dial",
-        "service_type": "urn:dial-multiscreen-org:service:dial:1",
-        "driver": null
-      }
     }
   ],
   "drivers": {
