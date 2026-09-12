@@ -1,16 +1,7 @@
 {
-  "generated_at": "2026-09-12 10:06:28",
-  "count": 18,
+  "generated_at": "2026-09-12 12:13:10",
+  "count": 17,
   "devices": [
-    {
-      "name": "WPS Access Point",
-      "source": "arp",
-      "control": {
-        "type": "upnp",
-        "service_type": "urn:schemas-wifialliance-org:service:WFAWLANConfig:1",
-        "driver": null
-      }
-    },
     {
       "name": "Archer AX1500",
       "source": "arp",
@@ -57,8 +48,37 @@
       "source": "arp"
     },
     {
+      "name": "?",
+      "source": "arp"
+    },
+    {
+      "name": "?",
+      "source": "arp"
+    },
+    {
+      "name": "?",
+      "source": "arp"
+    },
+    {
+      "name": "?",
+      "source": "arp"
+    },
+    {
+      "name": "?",
+      "source": "arp"
+    },
+    {
+      "name": "WPS Access Point",
+      "source": "upnp",
+      "control": {
+        "type": "upnp",
+        "service_type": "urn:schemas-wifialliance-org:service:WFAWLANConfig:1",
+        "driver": null
+      }
+    },
+    {
       "name": "75\" TCL Roku TV",
-      "source": "arp",
+      "source": "upnp",
       "control": {
         "type": "upnp",
         "service_type": "urn:roku-com:service:ecp:1",
@@ -138,30 +158,6 @@
           }
         ]
       }
-    },
-    {
-      "name": "?",
-      "source": "arp"
-    },
-    {
-      "name": "?",
-      "source": "arp"
-    },
-    {
-      "name": "?",
-      "source": "arp"
-    },
-    {
-      "name": "?",
-      "source": "arp"
-    },
-    {
-      "name": "?",
-      "source": "arp"
-    },
-    {
-      "name": "broadcasthost",
-      "source": "arp"
     }
   ],
   "drivers": {
