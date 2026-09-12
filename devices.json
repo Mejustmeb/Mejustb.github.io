@@ -1,12 +1,30 @@
 {
-  "generated_at": "2026-09-12 09:32:17",
-  "count": 15,
+  "generated_at": "2026-09-12 09:58:43",
+  "count": 19,
   "devices": [
     {
-      "name": "?",
+      "name": "WPS Access Point",
+      "ip": "192.168.50.1",
+      "mac": "3c:7c:3f:88:8d:8",
+      "source": "arp",
+      "control": {
+        "type": "upnp",
+        "control_url": "http://192.168.50.1:49152/wps_control",
+        "service_type": "urn:schemas-wifialliance-org:service:WFAWLANConfig:1",
+        "driver": null
+      }
+    },
+    {
+      "name": "Archer AX1500",
       "ip": "192.168.50.2",
       "mac": "e4:c3:2a:77:24:c",
-      "source": "arp"
+      "source": "arp",
+      "control": {
+        "type": "upnp",
+        "control_url": "http://192.168.50.2:1900/fbuup/ctl/L3F",
+        "service_type": "urn:schemas-upnp-org:service:Layer3Forwarding:1",
+        "driver": null
+      }
     },
     {
       "name": "server1",
@@ -63,10 +81,90 @@
       "source": "arp"
     },
     {
-      "name": "?",
+      "name": "75\" TCL Roku TV",
       "ip": "192.168.50.228",
       "mac": "34:51:80:a:69:45",
-      "source": "arp"
+      "source": "arp",
+      "control": {
+        "type": "upnp",
+        "control_url": "http://192.168.50.228:8060/dial/",
+        "service_type": "urn:roku-com:service:ecp:1",
+        "driver": "roku",
+        "apps": [
+          {
+            "id": "tvinput.cvbs",
+            "name": "AV"
+          },
+          {
+            "id": "tvinput.hdmi3",
+            "name": "AV AMP"
+          },
+          {
+            "id": "tvinput.hdmi2",
+            "name": "HDMI\u00a02"
+          },
+          {
+            "id": "tvinput.hdmi1",
+            "name": "HDMI\u00a01"
+          },
+          {
+            "id": "tvinput.dtv",
+            "name": "Live\u00a0TV"
+          },
+          {
+            "id": "151908",
+            "name": "The Roku Channel"
+          },
+          {
+            "id": "41468",
+            "name": "Tubi - Free Movies & TV"
+          },
+          {
+            "id": "74519",
+            "name": "Pluto TV - Free Movies/Shows"
+          },
+          {
+            "id": "837",
+            "name": "YouTube"
+          },
+          {
+            "id": "2285",
+            "name": "Hulu"
+          },
+          {
+            "id": "22297",
+            "name": "Spotify Music"
+          },
+          {
+            "id": "551012",
+            "name": "Apple TV"
+          },
+          {
+            "id": "773622",
+            "name": "Backdrops"
+          },
+          {
+            "id": "12",
+            "name": "Netflix"
+          },
+          {
+            "id": "291097",
+            "name": "Disney Plus"
+          },
+          {
+            "id": "637193",
+            "name": "Apple Music"
+          },
+          {
+            "id": "717980",
+            "name": "Cast to TV - Screen Mirroring"
+          },
+          {
+            "id": "13",
+            "name": "Prime Video"
+          }
+        ]
+      }
     },
     {
       "name": "?",
@@ -91,6 +189,78 @@
       "ip": "224.0.0.251",
       "mac": "1:0:5e:0:0:fb",
       "source": "arp"
+    },
+    {
+      "name": "?",
+      "ip": "239.255.255.250",
+      "mac": "1:0:5e:7f:ff:fa",
+      "source": "arp"
+    },
+    {
+      "name": "broadcasthost",
+      "ip": "255.255.255.255",
+      "mac": "ff:ff:ff:ff:ff:ff",
+      "source": "arp"
+    },
+    {
+      "name": "XBOXONE",
+      "ip": "192.168.50.203",
+      "mac": "",
+      "source": "upnp",
+      "control": {
+        "type": "upnp",
+        "control_url": "http://192.168.50.203:2869/upnphost/udhisapi.dll?control=uuid:130147ac-a985-4281-8462-d0494b7383a3+urn:dial-multiscreen-org:serviceId:dial",
+        "service_type": "urn:dial-multiscreen-org:service:dial:1",
+        "driver": null
+      }
     }
-  ]
+  ],
+  "drivers": {
+    "roku": {
+      "label": "Roku",
+      "actions": [
+        "power",
+        "home",
+        "volume_up",
+        "volume_down",
+        "mute",
+        "up",
+        "down",
+        "left",
+        "right",
+        "select",
+        "back",
+        "play",
+        "launch"
+      ]
+    },
+    "tasmota": {
+      "label": "Tasmota",
+      "actions": [
+        "on",
+        "off"
+      ]
+    },
+    "shelly": {
+      "label": "Shelly",
+      "actions": [
+        "on",
+        "off"
+      ]
+    },
+    "wemo": {
+      "label": "Belkin Wemo",
+      "actions": [
+        "on",
+        "off"
+      ]
+    },
+    "hue": {
+      "label": "Philips Hue",
+      "actions": [
+        "on",
+        "off"
+      ]
+    }
+  }
 }

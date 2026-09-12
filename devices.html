@@ -55,10 +55,21 @@
       el.innerHTML = list.map(function (x) {
         var name = (x.name && x.name !== '?') ? x.name : x.ip;
         var mac = x.mac ? '<p class="dim">' + x.mac + '</p>' : '';
-        var svc = x.service ? (' · ' + x.service) : '';
-        return '<div class="card"><span class="badge green">' + (x.source || 'device') + '</span>' +
+        var ctl = (x.control) || {};
+        var badge = '<span class="badge green">' + (x.source || 'device') + '</span>';
+        if (ctl.driver && d.drivers && d.drivers[ctl.driver]) {
+          badge += ' <span class="badge">' + (d.drivers[ctl.driver].label || ctl.driver) + '</span>';
+        }
+        var appsHtml = '';
+        if (ctl.apps && ctl.apps.length) {
+          var shown = ctl.apps.slice(0, 10);
+          var names = shown.map(function (a) { return a.name; }).join(' · ');
+          var more = ctl.apps.length > 10 ? ' +' + (ctl.apps.length - 10) + ' more' : '';
+          appsHtml = '<p class="dim">apps: ' + names + more + '</p>';
+        }
+        return '<div class="card">' + badge +
           '<h3><span class="ic">🖥️</span>' + name + '</h3>' +
-          '<p>' + (x.ip || '') + svc + '</p>' + mac + '</div>';
+          '<p>' + (x.ip || '') + '</p>' + mac + appsHtml + '</div>';
       }).join('');
     })
     .catch(function () {
